@@ -1,0 +1,54 @@
+$bg-color: #fff;
+$bg-color-header: #f2f6fa;
+
+html, body {
+  height: 100%;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: $bg-color;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.container,
+.header__container,
+.footer__container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.header {
+  background: $bg-color-header;
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 100px;
+  }
+  .header__logo {
+    img {
+      height: 70px;
+      width: auto;
+    }
+  }
+}
+
+.offer__header {
+  text-align: center;
+}
+
+
+.footer {
+  padding: 25px 10px;
+  background: $bg-color-header;
+  flex-shrink: 0;
+
+  p {
+    margin: 0;
+  }
+}
