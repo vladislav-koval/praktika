@@ -1,0 +1,33 @@
+.Cross {
+  z-index: 10;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  background: #4285F4;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  transform-origin: center;
+  cursor: pointer;
+
+  &:before,
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 4px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg)
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

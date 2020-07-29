@@ -1,0 +1,20 @@
+.header {
+  background: $bg-color-header;
+  padding: 0 10px;
+  .header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+  }
+  .header__logo {
+    img {
+      height: 70px;
+      width: auto;
+    }
+  }
+}
+
+.offer__header {
+  text-align: center;
+}
