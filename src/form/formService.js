@@ -176,6 +176,15 @@ export function getLoginControls() {
     }
 }
 
+export function getJoinControls() {
+    return {
+        login: authControls.login,
+        password: authControls.password,
+        name: authControls.name,
+        surname: authControls.surname
+    }
+}
+
 export function getProfileControls() {
     return {
         login: {...authControls.login, valid: true},

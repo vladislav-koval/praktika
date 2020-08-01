@@ -11,7 +11,8 @@ const Header = props => {
                     <img src={logo} alt="logo"/>
                 </div>
                 <ul className="header-list">
-                    <Button type='primary' onClick={props.onClick}>Вход</Button>
+                    <Button type='primary' onClick={props.onAuthClick}>Вход</Button>
+                    <Button type='primary' onClick={props.onJoinClick}>Регистрация</Button>
                 </ul>
             </div>
         </header>

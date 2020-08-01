@@ -2,14 +2,20 @@ import React, {Component} from "react";
 import Header from "../../containers/Header/Header";
 import Footer from "../../containers/Footer/Footer";
 import Auth from "../../containers/Auth/Auth";
+import Join from "../../containers/Join/Join";
 
 class Layout extends Component{
     state = {
-        isAuth: true,
+        isAuth: false,
+        isJoin: false
     };
 
     onAuthToggle = () => {
         this.setState({isAuth: !this.state.isAuth})
+    }
+
+    onJoinToggle = () => {
+        this.setState({isJoin: !this.state.isJoin})
     }
 
     render() {
@@ -18,7 +24,10 @@ class Layout extends Component{
                 {
                     this.state.isAuth && <Auth onClick={this.onAuthToggle}/>
                 }
-                <Header/>
+                {
+                    this.state.isJoin && <Join onClick={this.onJoinToggle}/>
+                }
+                <Header onAuthClick={this.onAuthToggle} onJoinClick={this.onJoinToggle}/>
                 {this.props.children}
                 <Footer/>
             </>

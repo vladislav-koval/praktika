@@ -1,19 +1,19 @@
 import React, {Component} from "react";
-import {getLoginControls, onChangeHandler} from "../../form/formService";
-import classes from "./Auth.module.scss";
+import {getJoinControls, getLoginControls, onChangeHandler} from "../../form/formService";
+import classes from "./../Auth/Auth.module.scss";
 import Input from "../../components/UI/Input/Input";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Button from "../../components/UI/Button/Button";
 import Cross from "../../components/UI/Cross/Cross";
 
-class Auth extends Component {
+class Join extends Component {
     constructor(pros) {
         super(pros);
         this.state = {
             errorMessage: "",
             isError: false,
             isFormValid: false,
-            formControls: {...getLoginControls()},
+            formControls: {...getJoinControls()},
         };
     }
 
@@ -24,7 +24,7 @@ class Auth extends Component {
     loginHandler = () => {
         const username = this.state.formControls.login.value;
         const password = this.state.formControls.password.value;
-        alert("You are logged in")
+        alert("You are joined in")
         // AuthService.executeBasicAuthenticationService(username, password)
         //     .then(() => {
         //         this.setState({errorMessage: "", isError: false});
@@ -86,4 +86,4 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+export default Join;
