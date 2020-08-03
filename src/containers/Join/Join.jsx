@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getJoinControls, getLoginControls, onChangeHandler} from "../../form/formService";
+import {getJoinControls, onChangeHandler} from "../../form/formService";
 import classes from "./../Auth/Auth.module.scss";
 import Input from "../../components/UI/Input/Input";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
