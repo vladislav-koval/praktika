@@ -1,3 +1,7 @@
+export const PERFORMER = 1;
+export const CUSTOMER = 2;
+export const PERFORMER_CUSTOMER = 3;
+
 export function validateControl(validation, value) {
     if (!validation) {
         return true;
@@ -82,91 +86,51 @@ const authControls = {
     }
 };
 
-const recipeControls = {
-    name: {
-        value: '',
-        type: 'text',
-        label: 'Название рецепта',
-        errorMessage: 'Название не может быть пустым',
-        valid: false,
-        touched: false,
-        validation: {
-            required: true,
-            minLength: 1,
-        }
-    },
-
-    description: {
-        value: '',
-        type: 'text',
-        label: 'Описание:',
-        errorMessage: 'Описание не может быть пустым',
-        valid: false,
-        touched: false,
-        validation: {
-            required: true,
-            minLength: 1,
-        }
-    },
-
-    ingredient: {
-        value: '',
-        type: 'text',
-        label: '',
-        errorMessage: '',
-        valid: true,
-        touched: false,
-    },
-
-    categories: [
-        {
-            key: "firstCourse",
-            value: "Первое блюдо"
-        },
-        {
-            key: "secondCourse",
-            value: "Второе блюдо"
-        },
-        {
-            key: "snack",
-            value: "Закуска"
-        },
-        {
-            key: "salad",
-            value: "Салат"
-        },
-        {
-            key: "dessert",
-            value: "Десерт"
-        },
-        {
-            key: "doughProduct",
-            value: "Изделие из теста"
-        },
-        {
-            key: "drink",
-            value: "Напиток"
-        },
-        {
-            key: "other",
-            value: "Другое"
-        }
+const stageControls = {
+    stages: [
+        {name: "Внесение предоплаты (20%)", responsible: CUSTOMER},
+        {name: "Предоставление исходных данных", responsible: CUSTOMER},
+        {name: "Выездное обследование", responsible: PERFORMER},
+        {name: "Разработка графической части", responsible: PERFORMER},
+        {name: "Согласование графической части", responsible: CUSTOMER},
+        {name: "Разработка тестовой части", responsible: PERFORMER},
+        {name: "Согласование текстовой части", responsible: CUSTOMER},
+        {name: "Подписание акта", responsible: PERFORMER_CUSTOMER},
+        {name: "Оплата Контракта (80%)", responsible: CUSTOMER},
+        {name: "Передача результатов Контракта на бумажном носителе", responsible: PERFORMER},
     ],
+
+    startDate: {
+        value: '',
+        type: 'date',
+        label: 'Время начала этапа:',
+        errorMessage: '',
+        valid: false,
+        touched: false,
+        validation: {
+            required: false,
+        }
+    },
+    endDate: {
+        value: '',
+        type: 'date',
+        label: 'Время конца этапа:',
+        errorMessage: '',
+        valid: false,
+        touched: false,
+        validation: {
+            required: false,
+        }
+    },
 };
 
-export function getRecipeCategories() {
-    return recipeControls.categories;
-}
-
-export function getRecipeControls() {
-    return {
-        name: recipeControls.name,
-        description: recipeControls.description
-    }
-}
-
-export function getRecipeIngredientControl() {
-    return recipeControls.ingredient;
+export function getStageControls() {
+    const controls = stageControls.stages;
+    return controls.map(control => {
+        control.startDate = {...stageControls.startDate}
+        control.endDate = {...stageControls.endDate}
+        return control;
+    });
 }
 
 export function getLoginControls() {
