@@ -1,0 +1,44 @@
+.table-graphic {
+  border-collapse: collapse;
+  margin: 0 auto;
+
+  .graphic-row {
+    &.head {
+      text-align: left;
+
+      th {
+        border-bottom: none;
+      }
+    }
+
+    td,
+    th {
+      padding: 7px 15px;
+      border-bottom: 2px solid #4285F4;
+    }
+    td:first-child,
+    th:first-child {
+      padding-left: 0;
+    }
+    td:last-child,
+    th:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .table-graphic {
+    font-size: 13px;
+  }
+
+  .startTime,
+  .endTime {
+    input {
+      padding: 4px 6px;
+    }
+    max-width: 150px;
+  }
+
+
+}

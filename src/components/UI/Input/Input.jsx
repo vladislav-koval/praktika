@@ -10,7 +10,9 @@ const Input = props => {
     const cls = [classes.Input];
     const htmlFor = `${inputType}-${Math.random()}`;
 
-
+    if (inputType === 'date') {
+        cls.push(classes.date);
+    }
     if (isInvalid(props)) {
         cls.push(classes.invalid);
     }
