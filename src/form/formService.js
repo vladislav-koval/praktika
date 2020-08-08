@@ -60,6 +60,15 @@ const authControls = {
             minLength: 5,
         }
     },
+    acceptPassword: {
+        value: '',
+        passValue: '',
+        type: 'password',
+        label: 'Подтвердите пароль',
+        errorMessage: 'Пароли не совпадают',
+        valid: false,
+        touched: false,
+    },
     name: {
         value: '',
         type: 'text',
@@ -77,6 +86,19 @@ const authControls = {
         type: 'text',
         label: 'Фамилия',
         errorMessage: 'Фамилия не может быть пустой',
+        valid: false,
+        touched: false,
+        validation: {
+            required: true,
+            minLength: 2,
+        }
+    },
+
+    companyName: {
+        value: '',
+        type: 'text',
+        label: 'Название Компании',
+        errorMessage: 'Заполните название Компании',
         valid: false,
         touched: false,
         validation: {
@@ -144,8 +166,10 @@ export function getJoinControls() {
     return {
         login: authControls.login,
         password: authControls.password,
+        acceptPassword: authControls.acceptPassword,
         name: authControls.name,
-        surname: authControls.surname
+        surname: authControls.surname,
+        companyName: authControls.companyName
     }
 }
 

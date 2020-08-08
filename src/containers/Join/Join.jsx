@@ -36,6 +36,7 @@ class Join extends Component {
     };
 
     onChangeHandler = (event, controlName) => {
+
         const {formControls, isFormValid} = onChangeHandler(event, {...this.state.formControls}, controlName);
         this.setState({
             formControls,
