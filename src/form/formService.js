@@ -1,6 +1,6 @@
-export const PERFORMER = 1;
-export const CUSTOMER = 2;
-export const PERFORMER_CUSTOMER = 3;
+export const PERFORMER = "Исполнитель";
+export const CUSTOMER = "Заказчик";
+export const PERFORMER_CUSTOMER = "Заказчик, Исполнитель";
 
 export function validateControl(validation, value) {
     if (!validation) {
@@ -122,35 +122,23 @@ const stageControls = {
         {name: "Передача результатов Контракта на бумажном носителе", responsible: PERFORMER},
     ],
 
-    startDate: {
-        value: '',
-        type: 'date',
-        label: 'Время начала этапа:',
-        errorMessage: '',
-        valid: false,
-        touched: false,
-        validation: {
-            required: false,
-        }
+    planned: {
+        startDate: null,
+        endDate: null
     },
-    endDate: {
-        value: '',
-        type: 'date',
-        label: 'Время конца этапа:',
-        errorMessage: '',
-        valid: false,
-        touched: false,
-        validation: {
-            required: false,
-        }
+
+    fact: {
+        startDate: null,
+        endDate: null
     },
 };
 
 export function getStageControls() {
     const controls = stageControls.stages;
-    return controls.map(control => {
-        control.startDate = {...stageControls.startDate}
-        control.endDate = {...stageControls.endDate}
+    return controls.map((control, index) => {
+        control.planned = {...stageControls.planned}
+        control.fact = {...stageControls.fact}
+        control.order = index;
         return control;
     });
 }
