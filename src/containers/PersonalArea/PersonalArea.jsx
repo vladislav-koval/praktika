@@ -3,6 +3,7 @@ import Button from "../../components/UI/Button/Button";
 import { getStageControls } from "../../form/formService";
 import './style.scss';
 import Table from "../../components/Table/Table";
+import { getStages, setStages } from "../../services/StagesService";
 
 class PersonalArea extends Component {
 
@@ -13,14 +14,19 @@ class PersonalArea extends Component {
   }
 
   dataHandler = () => {
-    console.log(this.state.stageControls)
+    setStages(this.state.stageControls).then(res => {
+      alert("success");
+    }).catch(err => {
+      alert("error");
+    })
   }
 
   componentDidMount() {
-    console.log(this.state.stageControls)
-    for(let s of this.state.stageControls) {
-      console.log(s.responsible)
-    }
+    getStages().then(res => {
+      this.setState({ stageControls: res.data });
+    }).catch(err => {
+      alert(err.message);
+    })
   }
 
   setPlanned = () => {

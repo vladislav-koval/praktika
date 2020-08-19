@@ -3,12 +3,12 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 
 import Home from "./containers/Home/Home";
 import Layout from "./hoc/Layout/Layout";
 import PersonalArea from "./containers/PersonalArea/PersonalArea";
+import { PrivateRoute } from "./hoc/PrivateRoute/PrivateRoute";
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route exact path="/account" component={PersonalArea}/>
+                    <PrivateRoute exact path="/account" component={PersonalArea}/>
                 </Switch>
             </Layout>
         </Router>
