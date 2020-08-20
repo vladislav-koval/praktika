@@ -17,9 +17,9 @@ export function getStages() {
 }
 
 export function setStages(stages) {
-  return axios.post(`${API_URL}/stages`, {
-    stages
-  }, {
+  return axios.post(`${API_URL}/stages`,
+    [...stages]
+  , {
     headers: {
       authorization: Cookies.get(TOKEN)
     }
