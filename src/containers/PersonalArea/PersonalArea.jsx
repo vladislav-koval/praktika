@@ -4,6 +4,7 @@ import { getStageControls } from "../../form/formService";
 import './style.scss';
 import Table from "../../components/Table/Table";
 import { getStages, setStages } from "../../services/StagesService";
+import { Link } from "react-router-dom";
 
 class PersonalArea extends Component {
 
@@ -53,6 +54,7 @@ class PersonalArea extends Component {
             <nav className="personal-area__nav">
               <Button type='primary' onClick={this.setPlanned}>Плановая таблица</Button>
               <Button type='primary' onClick={this.setFact}>Фактическая таблица</Button>
+              <Link to={"/account/gantt"}>График</Link>
             </nav>
             <h2 className="graphic-header">{this.state.header}</h2>
             <Table stageControls={this.state.stageControls} onChangeHandler={this.onChangeHandler}
