@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import TimeLine from "react-gantt-timeline";
 
 function TimeLineGantt() {
-  const config = {
+  let config = {
     taskList: {
       title: {
         label: "Этапы",
@@ -64,7 +64,7 @@ function TimeLineGantt() {
           <div className="mode-container-item __month" onClick={() => setMode("month")}>Месяц</div>
           <div className="mode-container-item __year" onClick={() => setMode("year")}>Год</div>
         </div>
-        <TimeLine mode={mode} config={config} data={data} nonEditableName={true} />
+        <TimeLine mode={mode} data={data} nonEditableName={true} />
       </div>
     </main>
   )
