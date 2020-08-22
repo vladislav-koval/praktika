@@ -72,7 +72,7 @@ class Join extends Component {
       <>
 
         <form onSubmit={this.submitHandler} className={classes.Auth}>
-          <h1>Вход в аккаунт</h1>
+          <h1>Регистрация аккаунта</h1>
           <Cross onClick={this.props.onClick} />
           {this.renderInputs()}
           {this.state.isError &&
@@ -82,7 +82,7 @@ class Join extends Component {
           }
           <Button type='primary'
                   onClick={this.loginHandler}
-                  disabled={!this.state.isFormValid}>Вход</Button>
+                  disabled={!this.state.isFormValid}>Регистрация</Button>
         </form>
         <Backdrop onClick={this.props.onClick} />
       </>

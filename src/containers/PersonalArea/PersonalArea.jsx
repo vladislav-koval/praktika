@@ -23,7 +23,8 @@ class PersonalArea extends Component {
 
   componentDidMount() {
     getStages().then(res => {
-      this.setState({ stageControls: res.data });
+      if (res.data.length > 0)
+        this.setState({ stageControls: res.data });
     }).catch(err => {
       alert(err.message);
     })

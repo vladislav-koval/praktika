@@ -9,6 +9,7 @@ import Home from "./containers/Home/Home";
 import Layout from "./hoc/Layout/Layout";
 import PersonalArea from "./containers/PersonalArea/PersonalArea";
 import { PrivateRoute } from "./hoc/PrivateRoute/PrivateRoute";
+import TimeLineGantt from "./containers/TimeLineGantt/TimeLineGantt";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <PrivateRoute exact path="/account" component={PersonalArea}/>
+                    <Route path="/account/gantt" component={TimeLineGantt}/>
                 </Switch>
             </Layout>
         </Router>
