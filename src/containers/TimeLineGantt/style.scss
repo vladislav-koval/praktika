@@ -28,3 +28,18 @@
     }
   }
 }
+
+.timeLine-side-task-row {
+  text-align: left !important;
+  padding-left: 10px;
+  white-space: nowrap;
+}
+
+.timeLine-main-data-row > div {
+  border-radius: 4px !important;
+  transform: translateX(-6px);
+}
+
+.timeLine-main-data-task-side {
+  display: none !important;
+}
