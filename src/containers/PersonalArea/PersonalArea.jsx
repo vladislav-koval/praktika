@@ -54,13 +54,18 @@ class PersonalArea extends Component {
             <nav className="personal-area__nav">
               <Button type='primary' onClick={this.setPlanned}>Плановая таблица</Button>
               <Button type='primary' onClick={this.setFact}>Фактическая таблица</Button>
-              <Link to={"/account/gantt"}>График</Link>
+              <Link className="personal-area__link" to={"/account/gantt"}>
+                График
+              </Link>
             </nav>
             <h2 className="graphic-header">{this.state.header}</h2>
-            <Table stageControls={this.state.stageControls} onChangeHandler={this.onChangeHandler}
-                   isPlanned={this.state.isPlanned} />
-
-            <Button onClick={this.dataHandler} disabled={false}>Сохранить</Button>
+            <div className="personal-area__table-container">
+              <Table stageControls={this.state.stageControls} onChangeHandler={this.onChangeHandler}
+                     isPlanned={this.state.isPlanned} />
+            </div>
+            <div className="save-btn__container">
+              <Button onClick={this.dataHandler} disabled={false}>Сохранить</Button>
+            </div>
           </div>
         </main>
       </>

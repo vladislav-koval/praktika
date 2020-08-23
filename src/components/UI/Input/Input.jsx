@@ -24,6 +24,8 @@ const Input = props => {
                    id={htmlFor}
                    value={props.value}
                    onChange={props.onChange}
+                   min={props.min}
+                   max={props.max}
             />
 
             {isInvalid(props) ? <span>{props.errorMessage}</span> : null}
