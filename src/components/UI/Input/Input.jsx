@@ -26,6 +26,7 @@ const Input = props => {
                    onChange={props.onChange}
                    min={props.min}
                    max={props.max}
+                   disabled={props.disabled}
             />
 
             {isInvalid(props) ? <span>{props.errorMessage}</span> : null}

@@ -40,7 +40,7 @@ function TimeLineGantt() {
           <div className="mode-container-item __month" onClick={() => setMode("month")}>Месяц</div>
           <div className="mode-container-item __year" onClick={() => setMode("year")}>Год</div>
         </div>
-        <TimeLine itemHeight={60} mode={mode} data={data} nonEditableName={true} />
+        <TimeLine mode={mode} data={data} nonEditableName={true} />
       </div>
     </main>
   )

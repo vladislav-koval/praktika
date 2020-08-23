@@ -2,7 +2,7 @@ import React from "react";
 import ElementGraphics from "../ElementGraphics/ElementGraphics";
 import '../ElementGraphics/style.scss'
 
-const Table = ({ stageControls, onChangeHandler, isPlanned }) => {
+const Table = ({ stageControls, onChangeHandler, isPlanned, disabled }) => {
   stageControls.sort((a, b) => a.order - b.order);
   return (
     <table className="table-graphic">
@@ -23,7 +23,7 @@ const Table = ({ stageControls, onChangeHandler, isPlanned }) => {
             endDate = stageControl.planned.endDate;
           }
           return <ElementGraphics key={i} name={stageControl.name} responsible={stageControl.responsible}
-                                  startDate={startDate} endDate={endDate} onChange={onChangeHandler} index={i} />
+                                  startDate={startDate} endDate={endDate} onChange={onChangeHandler} index={i} disabled={disabled} />
         })
       }
       </tbody>

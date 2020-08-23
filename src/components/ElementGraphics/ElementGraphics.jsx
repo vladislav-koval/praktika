@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './style.scss'
 import Input from "../UI/Input/Input";
 
-const ElementGraphics = ({ name, responsible, startDate, endDate, onChange, index }) => {
+const ElementGraphics = ({ name, responsible, startDate, endDate, onChange, index, disabled }) => {
   const [state, setState] = useState({ min: null, max: null });
 
   const changeStart = (value) => {
@@ -43,6 +43,7 @@ const ElementGraphics = ({ name, responsible, startDate, endDate, onChange, inde
       <td className="responsible">{responsible}</td>
       <td className="startTime">
         <Input className="input" value={startDate ?? ""} type="date"
+               disabled={disabled}
                max={state.max}
                onChange={(event) => {
                  onChange(event.target.value, 'startDate', index);
@@ -50,6 +51,7 @@ const ElementGraphics = ({ name, responsible, startDate, endDate, onChange, inde
       </td>
       <td className="endTime">
         <Input value={endDate ?? ""} type="date" min={state.min}
+               disabled={disabled}
                onChange={(event) => {
                  onChange(event.target.value, 'endDate', index);
                }} />

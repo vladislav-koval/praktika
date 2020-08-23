@@ -1,0 +1,24 @@
+.user-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__user {
+    color: black;
+    padding: 10px;
+    border-bottom: 1px solid rgb(66, 133, 244);
+
+    &:hover {
+      border-bottom: 1px solid rgba(66, 133, 244, 0.7);
+      color: #4285f4;
+    }
+  }
+}

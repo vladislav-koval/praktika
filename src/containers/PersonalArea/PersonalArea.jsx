@@ -5,6 +5,8 @@ import './style.scss';
 import Table from "../../components/Table/Table";
 import { getStages, setStages } from "../../services/StagesService";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { ADMIN, ROLE } from "../../services/ApiConstants";
 
 class PersonalArea extends Component {
 
@@ -12,6 +14,7 @@ class PersonalArea extends Component {
     stageControls: [...getStageControls()],
     isPlanned: true,
     header: "Плановая таблица",
+    isUser: true,
   }
 
   dataHandler = () => {
@@ -23,12 +26,16 @@ class PersonalArea extends Component {
   }
 
   componentDidMount() {
-    getStages().then(res => {
-      if (res.data.length > 0)
-        this.setState({ stageControls: res.data });
-    }).catch(err => {
-      alert(err.message);
-    })
+    if (Cookies.get(ROLE) === ADMIN) {
+      this.setState({ isUser: false });
+    } else {
+      getStages().then(res => {
+        if (res.data.length > 0)
+          this.setState({ stageControls: res.data });
+      }).catch(err => {
+        alert(err.message);
+      });
+    }
   }
 
   setPlanned = () => {
@@ -63,9 +70,12 @@ class PersonalArea extends Component {
               <Table stageControls={this.state.stageControls} onChangeHandler={this.onChangeHandler}
                      isPlanned={this.state.isPlanned} />
             </div>
-            <div className="save-btn__container">
-              <Button onClick={this.dataHandler} disabled={false}>Сохранить</Button>
-            </div>
+            {this.state.isUser && (
+              <div className="save-btn__container">
+                <Button onClick={this.dataHandler} disabled={false}>Сохранить</Button>
+              </div>
+            )}
+
           </div>
         </main>
       </>
