@@ -58,6 +58,10 @@ function AdminUserArea(props) {
           <Link className={"admin-link"} to="/admin/users">Список Пользователей</Link>
         </div>
         {
+          isTables && (isPlanned ? <h2>Плановая таблица</h2>
+            : <h2>Фактическая таблица</h2>)
+        }
+        {
           isTables ? (<Table stageControls={stageControls} isPlanned={isPlanned} disabled={true} />)
             : (
               <>
