@@ -64,6 +64,9 @@ class PersonalArea extends Component {
               <Link className="personal-area__link" to={"/account/gantt"}>
                 График
               </Link>
+              <Link className="personal-area__link" to={"/account/proposal"}>
+                Коммерческое предложение
+              </Link>
             </nav>
             <h2 className="graphic-header">{this.state.header}</h2>
             <div className="personal-area__table-container">

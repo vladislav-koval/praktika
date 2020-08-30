@@ -30,9 +30,11 @@
 }
 
 .gantt__buttons {
+  display: flex;
   margin-bottom: 10px;
   a {
     margin-left: 0;
+    margin-right: 15px;
   }
 }
 

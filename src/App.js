@@ -12,6 +12,7 @@ import { PrivateRoute } from "./hoc/PrivateRoute/PrivateRoute";
 import TimeLineGantt from "./containers/TimeLineGantt/TimeLineGantt";
 import UserList from "./containers/UserList/UserList";
 import AdminUserArea from "./containers/AdminUserArea/AdminUserArea";
+import UserProposal from "./containers/UserProposal/UserProposal";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route exact path="/" component={Home}/>
                     <PrivateRoute exact path="/account" component={PersonalArea}/>
                     <Route path="/account/gantt" component={TimeLineGantt}/>
+                    <Route path="/account/proposal" component={UserProposal}/>
                     <Route exact path="/admin/users" component={UserList}/>
                     <Route exact path="/admin/users/:name" component={AdminUserArea}/>
                 </Switch>

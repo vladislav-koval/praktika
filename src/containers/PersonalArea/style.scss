@@ -3,7 +3,7 @@
 }
 
 .personal-area__nav {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
 
   button {
@@ -48,6 +48,7 @@
   padding: 12px 20px;
   border-radius: 4px;
   margin-left: 15px;
+  text-align: center;
 
   &.__nonMargin {
     margin: 0;

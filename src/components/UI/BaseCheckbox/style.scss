@@ -1,0 +1,26 @@
+.checkbox-proposal {
+  //display: flex;
+  //align-items: center;
+  //margin: 10px 0 auto;
+  //justify-content: center;
+  //
+  //&__text {
+  //  font-size: 14px;
+  //  flex-basis: 80%;
+  //  margin-right: 15px;
+  //}
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
+  margin: 0;
+  justify-content: space-between;
+  cursor: pointer;
+  &__text {
+    display: block;
+    padding-right: 15px;
+  }
+  input {
+    float: left;
+  }
+}
