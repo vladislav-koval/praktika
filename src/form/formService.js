@@ -206,7 +206,7 @@ export const requestFields = {
   ],
   category3: [
     {
-      id: "CHIS_NAS",
+      id: "CHIS_NAS_DRU_DOC",
       name: "Численность населения",
     },
   ],
