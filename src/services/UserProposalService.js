@@ -16,7 +16,6 @@ export function getTypes() {
     })
 }
 
-
 export function getProposal() {
   return axios.get(`${API_URL}/proposal`, {
     headers: {
@@ -29,4 +28,20 @@ export function getProposal() {
     .catch(err => {
       throw Error(err.response.data.message);
     })
+}
+
+export function setProposal(data) {
+  return axios.post(`${API_URL}/proposal`,
+    {...data}
+    , {
+      headers: {
+        authorization: Cookies.get(TOKEN)
+      }
+    })
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw Error(err.response.data.message);
+    });
 }
