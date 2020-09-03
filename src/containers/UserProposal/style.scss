@@ -15,6 +15,11 @@
       flex-basis: 50%;
     }
   }
+
+  &__required {
+    padding-left: 5px;
+    color: red;
+  }
 }
 
 .proposal-list {
@@ -28,4 +33,18 @@
   font-size: 14px;
   max-width: 80%;
   padding: 15px 15px 0;
+
+  &__required {
+    font-size: 20px;
+    color: red;
+  }
+}
+
+.user-proposal__help {
+  margin: 10px 0;
+  background: rgba(137, 158, 241, 0.5);
+  color: blue;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
 }

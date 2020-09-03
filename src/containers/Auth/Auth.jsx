@@ -26,7 +26,7 @@ class Auth extends Component {
     const username = this.state.formControls.login.value;
     const password = this.state.formControls.password.value;
 
-    loginUser(username, password).then(res => {
+    loginUser(username, password).then(() => {
       this.props.onClick();
       this.props.setAuthorizedUser(true);
     }).catch(err => {
@@ -66,7 +66,6 @@ class Auth extends Component {
 
     return (
       <>
-
         <form onSubmit={this.submitHandler} className={classes.Auth}>
           <h1>Вход в аккаунт</h1>
           <Cross onClick={this.props.onClick} />

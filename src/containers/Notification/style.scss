@@ -1,0 +1,22 @@
+.notification {
+  font-family: Roboto, sans-serif;
+  position: fixed;
+  width: 100%;
+  max-width: 450px;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 50px 40px;
+  border-radius: 5px;
+  z-index: 90;
+
+  &__header {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  &__message {
+    text-align: center;
+  }
+}
