@@ -6,6 +6,7 @@ const ElementGraphics = ({ name, responsible, startDate, endDate, onChange, inde
   const [state, setState] = useState({ min: null, max: null });
 
   const changeStart = (value) => {
+    //TODO: fix (07 + 1 === 8): need (07+1 === 08)
     let min = null;
     if (value) {
       value = value.split("-");

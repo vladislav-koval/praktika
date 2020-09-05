@@ -64,7 +64,7 @@ class PersonalArea extends Component {
               <Link className="personal-area__link" to={"/account/gantt"}>
                 График
               </Link>
-              <Link className="personal-area__link" to={"/account/proposal"}>
+              <Link className="personal-area__link" to={"/account/proposal-info"}>
                 Коммерческое предложение
               </Link>
             </nav>

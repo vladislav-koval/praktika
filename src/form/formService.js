@@ -233,7 +233,6 @@ export function getJoinControls() {
   return {
     login: authControls.login,
     password: authControls.password,
-    acceptPassword: authControls.acceptPassword,
     name: authControls.name,
     surname: authControls.surname,
     companyName: authControls.companyName

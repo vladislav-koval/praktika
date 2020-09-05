@@ -1,7 +1,6 @@
 import React from "react";
 import {
   getProposal,
-  getProposalDoc,
   setProposal,
   validateProposalPostRequest
 } from "../../services/UserProposalService";
@@ -37,7 +36,9 @@ class UserProposal extends React.Component {
         show: false,
         header: "",
         message: "",
-      }
+      },
+
+      proposalStatus: true,
     }
   }
 
@@ -53,7 +54,8 @@ class UserProposal extends React.Component {
         calculationType: data.calculationType.id,
       })
     }).catch((err) => {
-      this.setState({ notification: { show: true, header: "Ошибка", message: err } });
+      this.setState({ proposalStatus: false })
+      // this.setState({ notification: { show: true, header: "Ошибка", message: err.message } });
     })
   }
 
@@ -96,7 +98,7 @@ class UserProposal extends React.Component {
       this.setState({ notification: { show: true, header: "Ошибка", message: err } });
     } else {
       setProposal(this.state).then(() => {
-        this.setState({ notification: { show: true, header: "Успех", message: "Данные успешно отправленны" } });
+        this.setState({ notification: { show: true, header: "Успех", message: "Данные успешно отправленны" }, proposalStatus: true });
       }).catch(err => {
         this.setState({ notification: { show: true, header: "Ошибка", message: err.message } });
       })
@@ -105,6 +107,7 @@ class UserProposal extends React.Component {
 
   onCloseNotification = () => {
     this.setState({ notification: { show: false } });
+    this.props.history.push("/account/proposal-info");
   }
 
   render() {
@@ -118,6 +121,13 @@ class UserProposal extends React.Component {
             <Link className="personal-area__link" to={"/account/gantt"}>
               График
             </Link>
+            {
+              this.state.proposalStatus &&
+              <Link className="personal-area__link __new-proposal" to={"/account/proposal-info"}>
+                Статус предложения
+              </Link>
+            }
+
           </div>
           <div className="user-proposal__help">
             {"Поля обозначеные звездочкой обязательные. Так-же нужно выбрать хотябы один тип документа"}

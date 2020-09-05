@@ -35,7 +35,7 @@ function TimeLineGantt() {
       <div className="gantt__container">
         <div className="gantt__buttons">
           <Link className={"personal-area__link"} to={"/account"}>Таблицы</Link>
-          <Link className={"personal-area__link"} to={"/account/proposal"}>Коммерческое предложение</Link>
+          <Link className={"personal-area__link"} to={"/account/proposal-info"}>Коммерческое предложение</Link>
         </div>
         <div className={"mode-container " + mode}>
           <div className="mode-container-item __month" onClick={() => setMode("month")}>Месяц</div>
