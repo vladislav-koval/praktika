@@ -48,3 +48,12 @@
   border-radius: 5px;
   text-align: center;
 }
+
+.user-proposal__buttons {
+  display: flex;
+  margin-top: 20px;
+  >:first-child {
+    margin-left: 0;
+    height: 54px;
+  }
+}

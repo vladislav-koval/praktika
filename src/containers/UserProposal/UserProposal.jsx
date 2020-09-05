@@ -1,5 +1,10 @@
 import React from "react";
-import { getProposal, setProposal, validateProposalPostRequest } from "../../services/UserProposalService";
+import {
+  getProposal,
+  getProposalDoc,
+  setProposal,
+  validateProposalPostRequest
+} from "../../services/UserProposalService";
 import { typesDocs } from "../../form/formService";
 import { requestFields } from "../../form/formService";
 import BaseCheckbox from "../../components/UI/BaseCheckbox/BaseCheckbox";
@@ -7,6 +12,7 @@ import Input from "../../components/UI/Input/Input";
 import "./style.scss";
 import Button from "../../components/UI/Button/Button";
 import Notification from "../Notification/Notification";
+import { Link } from "react-router-dom";
 
 class UserProposal extends React.Component {
   constructor(props) {
@@ -44,9 +50,10 @@ class UserProposal extends React.Component {
         orgName: data.orgName,
         phone: data.phone,
         email: data.email,
+        calculationType: data.calculationType.id,
       })
     }).catch((err) => {
-      this.setState({ notification: { show: true, header: "Успех", message: err } });
+      this.setState({ notification: { show: true, header: "Ошибка", message: err } });
     })
   }
 
@@ -91,7 +98,7 @@ class UserProposal extends React.Component {
       setProposal(this.state).then(() => {
         this.setState({ notification: { show: true, header: "Успех", message: "Данные успешно отправленны" } });
       }).catch(err => {
-        this.setState({ notification: { show: true, header: "Успех", message: err } });
+        this.setState({ notification: { show: true, header: "Ошибка", message: err.message } });
       })
     }
   }
@@ -104,6 +111,14 @@ class UserProposal extends React.Component {
     return (
       <main>
         <div className="container">
+          <div className="user-proposal__buttons">
+            <Link className="personal-area__link" to={"/account"}>
+              Таблицы
+            </Link>
+            <Link className="personal-area__link" to={"/account/gantt"}>
+              График
+            </Link>
+          </div>
           <div className="user-proposal__help">
             {"Поля обозначеные звездочкой обязательные. Так-же нужно выбрать хотябы один тип документа"}
           </div>
@@ -136,8 +151,9 @@ class UserProposal extends React.Component {
                     </label>
                   </td>
                   <td>
-                    <input id="DIRECT_PRICE" type="radio" name="costCalculation"
-                           onChange={() => this.onChangeCalculationTypes("DIRECT_PRICE")} />
+                    <input id="AUCTION" type="radio" name="costCalculation"
+                           checked={this.state?.calculationType === "AUCTION"}
+                           onChange={() => this.onChangeCalculationTypes("AUCTION")} />
                   </td>
                 </tr>
                 <tr>
@@ -147,8 +163,9 @@ class UserProposal extends React.Component {
                     </label>
                   </td>
                   <td>
-                    <input id="AUCTION" type="radio" name="costCalculation"
-                           onChange={() => this.onChangeCalculationTypes("AUCTION")} />
+                    <input id="DIRECT_PRICE" type="radio" name="costCalculation"
+                           checked={this.state?.calculationType === "DIRECT_PRICE"}
+                           onChange={() => this.onChangeCalculationTypes("DIRECT_PRICE")} />
                   </td>
                 </tr>
                 </tbody>

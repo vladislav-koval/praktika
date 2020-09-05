@@ -49,7 +49,7 @@ export function setProposal(data) {
 
 export function validateProposalPostRequest(data) {
   let errorMessage;
-  console.log(data)
+  console.log("DATA", data)
 
   if (data.calculationType.trim() === "" || data.email.trim() === "" || data.name.trim() === "" || data.orgName.trim() === "" || data.phone.trim() === "" || data.nameGenitive.trim() === "") {
     errorMessage = "Заполните обязательные поля";
