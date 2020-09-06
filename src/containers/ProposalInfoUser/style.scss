@@ -1,0 +1,34 @@
+.proposal-made {
+  display: flex;
+  align-items: center;
+
+  &__message {
+    padding-left: 20px;
+    padding-right: 10px;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 0;
+      top: 50%;
+      border-radius: 50%;
+      background: #e7d152;
+      transform: translateY(-50%);
+    }
+
+    &.__success {
+      &:before {
+        background: #1db71d;
+      }
+    }
+  }
+
+  &__link {
+    color: #0000EE;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

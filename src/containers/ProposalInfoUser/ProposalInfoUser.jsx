@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProposal, getProposalDoc } from "../../services/UserProposalService";
 import ProposalInfo from "../ProposalInfo/ProposalInfo";
 import { useHistory, Link } from "react-router-dom";
+import "./style.scss";
 
 function ProposalInfoUser() {
   const [data, setData] = useState(null);
@@ -22,11 +23,11 @@ function ProposalInfoUser() {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'file.pdf'); //or any other extension
+      link.setAttribute('download', 'Коммерческое предложение.pdf'); //or any other extension
       document.body.appendChild(link);
       link.click();
     }).catch(err => {
-      console.log(err)
+      alert(err.message)
     })
 
   }
@@ -47,9 +48,15 @@ function ProposalInfoUser() {
             </Link>
           </div>
           <ProposalInfo data={data} categories={categories} />
-          {data?.status === "PROPOSAL_MADE" &&
-            <p onClick={onClickLink} className="proposal-made">Коммерческое предложение готово</p>
-          // <a download="foo.pdf" href={API_URL+"/proposal-doc"}>download</a>
+          {data?.status === "PROPOSAL_MADE" ?
+            <div className="proposal-made">
+              <p className="proposal-made__message __success">Коммерческое предложение готово: </p>
+              <a className="proposal-made__link" onClick={onClickLink}>Скачать</a>
+            </div>
+            :
+            <div className="proposal-made">
+              <p className="proposal-made__message ">Коммерческое предложение рассматривается администратором</p>
+            </div>
           }
 
         </div>
