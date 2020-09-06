@@ -1,36 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { getProposal } from "../../services/UserProposalService";
+import React from "react";
 import "./style.scss";
-import { Link, useHistory } from "react-router-dom";
 
-function ProposalInfo() {
-  const [data, setData] = useState(null);
-  const [categories, setCategories] = useState([])
-  const history = useHistory();
+function ProposalInfo({data, categories}) {
+  // const [data, setData] = useState(null);
+  // const [categories, setCategories] = useState([])
+  // const history = useHistory();
 
-  useEffect(() => {
-    getProposal().then(res => {
-      console.log("res", res)
-      setData(res.data);
-      setCategories(res.data.categories);
-    }).catch(err => {
-      history.push("/account/proposal")
-    })
-  }, [])
+  // useEffect(() => {
+  //   getProposal().then(res => {
+  //     console.log("res", res)
+  //     setData(res.data);
+  //     setCategories(res.data.categories);
+  //   }).catch(err => {
+  //     history.push("/account/proposal")
+  //   })
+  // }, [])
   return (
     <main>
       <div className="container">
-        <div className="user-proposal__buttons __proposal-info-margin">
-          <Link className="personal-area__link" to={"/account"}>
-            Таблицы
-          </Link>
-          <Link className="personal-area__link" to={"/account/gantt"}>
-            График
-          </Link>
-          <Link className="personal-area__link __new-proposal" to={"/account/proposal"}>
-            Создать новое предложение
-          </Link>
-        </div>
+        {/*<div className="user-proposal__buttons __proposal-info-margin">*/}
+        {/*  <Link className="personal-area__link" to={"/account"}>*/}
+        {/*    Таблицы*/}
+        {/*  </Link>*/}
+        {/*  <Link className="personal-area__link" to={"/account/gantt"}>*/}
+        {/*    График*/}
+        {/*  </Link>*/}
+        {/*  <Link className="personal-area__link __new-proposal" to={"/account/proposal"}>*/}
+        {/*    Создать новое предложение*/}
+        {/*  </Link>*/}
+        {/*</div>*/}
         <div className="proposal-info__inner">
           <div className="proposal-info__field">
             <span>ФИО в И.П</span>
