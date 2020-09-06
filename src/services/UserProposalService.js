@@ -31,6 +31,21 @@ export function getProposal() {
     })
 }
 
+export function getProposalDoc() {
+  return axios.get(`${API_URL}/proposal-doc`, {
+    headers: {
+      authorization: Cookies.get(TOKEN),
+      responseType: 'application/pdf'
+    }
+  })
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw Error(err.response.data.message);
+    })
+}
+
 export function setProposal(data) {
   return axios.post(`${API_URL}/proposal`,
     { ...data }

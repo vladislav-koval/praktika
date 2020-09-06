@@ -19,4 +19,17 @@
   &__message {
     text-align: center;
   }
+
+  button {
+    background: #1db71d;
+  }
+
+  &.__error {
+    button {
+      background: #ba3f4a;
+    }
+    .notification__header {
+      color: #ba3f4a;
+    }
+  }
 }

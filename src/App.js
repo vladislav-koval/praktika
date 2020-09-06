@@ -13,7 +13,8 @@ import TimeLineGantt from "./containers/TimeLineGantt/TimeLineGantt";
 import UserList from "./containers/UserList/UserList";
 import AdminUserArea from "./containers/AdminUserArea/AdminUserArea";
 import UserProposal from "./containers/UserProposal/UserProposal";
-import ProposalInfo from "./containers/ProposalInfo/ProposalInfo";
+import ProposalInfoUser from "./containers/ProposalInfoUser/ProposalInfoUser";
+import { PrivateAdminRoute } from "./hoc/PrivateAdminRoute/PrivateAdminRoute";
 
 function App() {
     return (
@@ -22,11 +23,11 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <PrivateRoute exact path="/account" component={PersonalArea}/>
-                    <Route path="/account/gantt" component={TimeLineGantt}/>
-                    <Route path="/account/proposal" component={UserProposal}/>
-                    <Route path="/account/proposal-info" component={ProposalInfo}/>
-                    <Route exact path="/admin/users" component={UserList}/>
-                    <Route exact path="/admin/users/:name" component={AdminUserArea}/>
+                    <PrivateRoute path="/account/gantt" component={TimeLineGantt}/>
+                    <PrivateRoute path="/account/proposal" component={UserProposal}/>
+                    <PrivateRoute path="/account/proposal-info" component={ProposalInfoUser}/>
+                    <PrivateAdminRoute exact path="/admin/users" component={UserList}/>
+                    <PrivateAdminRoute exact path="/admin/users/:name" component={AdminUserArea}/>
                 </Switch>
             </Layout>
         </Router>

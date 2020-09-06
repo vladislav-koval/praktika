@@ -36,6 +36,7 @@ class UserProposal extends React.Component {
         show: false,
         header: "",
         message: "",
+        isError: false
       },
 
       proposalStatus: true,
@@ -53,7 +54,7 @@ class UserProposal extends React.Component {
         email: data.email,
         calculationType: data.calculationType.id,
       })
-    }).catch((err) => {
+    }).catch(() => {
       this.setState({ proposalStatus: false })
       // this.setState({ notification: { show: true, header: "Ошибка", message: err.message } });
     })
@@ -95,19 +96,24 @@ class UserProposal extends React.Component {
   onClickHandler = () => {
     const err = validateProposalPostRequest(this.state);
     if (err) {
-      this.setState({ notification: { show: true, header: "Ошибка", message: err } });
+      this.setState({ notification: { show: true, header: "Ошибка", message: err, isError: true } });
     } else {
       setProposal(this.state).then(() => {
-        this.setState({ notification: { show: true, header: "Успех", message: "Данные успешно отправленны" }, proposalStatus: true });
+        this.setState({
+          notification: { show: true, header: "Успех", message: "Данные успешно отправленны" },
+          proposalStatus: true
+        });
       }).catch(err => {
-        this.setState({ notification: { show: true, header: "Ошибка", message: err.message } });
+        this.setState({ notification: { show: true, header: "Ошибка", message: err.message, isError: true } });
       })
     }
   }
 
   onCloseNotification = () => {
-    this.setState({ notification: { show: false } });
-    this.props.history.push("/account/proposal-info");
+    const error = this.state.notification.isError;
+    this.setState({ notification: { show: false, header: "", message: "", isError: false } });
+    if (!error)
+      this.props.history.push("/account/proposal-info");
   }
 
   render() {
@@ -215,7 +221,7 @@ class UserProposal extends React.Component {
         </div>
         {this.state.notification.show &&
         <Notification header={this.state.notification.header} message={this.state.notification.message}
-                      onClose={this.onCloseNotification} />
+                      onClose={this.onCloseNotification} isError={this.state.notification.isError}/>
         }
       </main>
     )

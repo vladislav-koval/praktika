@@ -7,6 +7,7 @@ import { getStages, setStages } from "../../services/StagesService";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { ADMIN, ROLE } from "../../services/ApiConstants";
+import Notification from "../Notification/Notification";
 
 class PersonalArea extends Component {
 
@@ -15,13 +16,44 @@ class PersonalArea extends Component {
     isPlanned: true,
     header: "Плановая таблица",
     isUser: true,
+
+    notification: {
+      header: "",
+      message: "",
+      show: false,
+      isError: false
+    }
+  }
+
+  onCloseNotification = () => {
+    this.setState({
+      notification: {
+        show: false,
+        header: "",
+        message: "",
+        isError: false
+      }
+    })
   }
 
   dataHandler = () => {
-    setStages(this.state.stageControls).then(res => {
-      alert("success");
+    setStages(this.state.stageControls).then(() => {
+      this.setState({
+        notification: {
+          show: true,
+          header: "Успех",
+          message: "Данные сохранены",
+        }
+      })
     }).catch(err => {
-      alert("error");
+      this.setState({
+        notification: {
+          show: true,
+          header: "Ошибка",
+          message: err?.message,
+          isError: true,
+        }
+      })
     })
   }
 
@@ -80,6 +112,11 @@ class PersonalArea extends Component {
             )}
 
           </div>
+          {
+            this.state.notification.show &&
+            <Notification header={this.state.notification.header} message={this.state.notification.message}
+                          onClose={this.onCloseNotification} />
+          }
         </main>
       </>
     );

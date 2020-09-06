@@ -7,6 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
 import ProposalInfo from "../ProposalInfo/ProposalInfo";
 import Input from "../../components/UI/Input/Input";
+import Notification from "../Notification/Notification";
 
 
 function AdminUserArea(props) {
@@ -21,6 +22,14 @@ function AdminUserArea(props) {
   const [categoriesProposal, setCategoriesProposal] = useState([]);
 
   const [cost, setCost] = useState("");
+  const [isProposal, setIsProposal] = useState(true);
+
+  const [notification, setNotification] = useState({
+    header: "",
+    message: "",
+    show: false,
+    isError: false
+  })
 
   const toTimeLineData = (data) => {
     let id = 1;
@@ -40,11 +49,30 @@ function AdminUserArea(props) {
 
   const makeProposal = () => {
     const login = props.match.params.name;
-    makeAdminProposal(login, cost).then(res => {
-      console.log("RES", res)
+    makeAdminProposal(login, cost).then(() => {
+      setNotification({
+        show: true,
+        header: "Успех",
+        message: "Предложение создано",
+      });
+      setCost("");
     }).catch(err => {
-      console.log("ERR", err)
+      setNotification({
+        show: true,
+        header: "Ошибка",
+        message: err.message,
+        isError: true,
+      })
     })
+  }
+
+  const onCloseNotification = () => {
+    setNotification({
+      show: false,
+      header: "",
+      message: "",
+      isError: false,
+    });
   }
 
   useEffect(() => {
@@ -52,8 +80,8 @@ function AdminUserArea(props) {
     getUser(login).then(res => {
       setStageControls(res.data);
       toTimeLineData(res.data);
-    }).catch(err => {
-      alert(err.message);
+    }).catch(() => {
+      alert("Пользователь не найден");
     })
   }, []);
 
@@ -62,8 +90,8 @@ function AdminUserArea(props) {
     getAdminProposal(login).then(res => {
       setDataProposal(res.data);
       setCategoriesProposal(res.data.categories);
-    }).catch(err => {
-      console.log(err);
+    }).catch(() => {
+      setIsProposal(false);
     })
   }, []);
 
@@ -86,8 +114,8 @@ function AdminUserArea(props) {
         <>
           <ProposalInfo data={dataProposal} categories={categoriesProposal} />
           <div className="set-cost">
-            <Input value={cost} onChange={(e) => setCost(e.target.value)} label={"Цена"} type="number"/>
-            <Button onClick={makeProposal}>Отправить предложение</Button>
+            <Input value={cost} onChange={(e) => setCost(e.target.value)} label={"Цена (₽)"} type="number" />
+            <Button onClick={makeProposal} disabled={!cost}>Отправить предложение</Button>
           </div>
         </>
       )
@@ -111,7 +139,7 @@ function AdminUserArea(props) {
           }}>График</Button>
           <Button type='primary' onClick={() => {
             setIsTables(3);
-          }}>Коммерческое предложение</Button>
+          }} disabled={!isProposal}>Коммерческое предложение</Button>
           <Link className={"admin-link"} to="/admin/users">Список Пользователей</Link>
         </div>
         {
@@ -120,6 +148,12 @@ function AdminUserArea(props) {
         }
         {
           renderFunc()
+        }
+
+        {
+          notification.show &&
+          <Notification header={notification.header} message={notification.message} isError={notification.isError}
+                        onClose={onCloseNotification} />
         }
       </div>
     </main>
