@@ -33,9 +33,9 @@ export function getProposal() {
 
 export function getProposalDoc() {
   return axios.get(`${API_URL}/proposal-doc`, {
+    responseType: 'blob',
     headers: {
       authorization: Cookies.get(TOKEN),
-      responseType: 'application/pdf'
     }
   })
     .then(res => {

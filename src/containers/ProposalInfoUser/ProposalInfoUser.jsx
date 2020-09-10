@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProposal, getProposalDoc } from "../../services/UserProposalService";
 import ProposalInfo from "../ProposalInfo/ProposalInfo";
 import { useHistory, Link } from "react-router-dom";
+import FileDownload from 'js-file-download';
 import "./style.scss";
 
 function ProposalInfoUser() {
@@ -20,12 +21,7 @@ function ProposalInfoUser() {
 
   const onClickLink = () => {
     getProposalDoc().then(response => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'Коммерческое предложение.pdf'); //or any other extension
-      document.body.appendChild(link);
-      link.click();
+      FileDownload(response.data, 'Коммерческое предложение.pdf');
     }).catch(err => {
       alert(err.message)
     })
