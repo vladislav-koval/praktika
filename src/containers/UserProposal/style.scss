@@ -51,9 +51,20 @@
 
 .user-proposal__buttons {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 20px;
-  >:first-child {
+
+  > :first-child {
     margin-left: 0;
     height: 54px;
+  }
+}
+
+@media (max-width: 670px) {
+  .user-proposal__buttons {
+    .personal-area__link {
+      margin: 0 auto 15px;
+      height: 50px;
+    }
   }
 }
